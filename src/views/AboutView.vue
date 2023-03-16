@@ -1,5 +1,9 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <h1>who are we?</h1>
 </template>
+
+<script>
+export default {};
+</script>
+
+<style></style>
