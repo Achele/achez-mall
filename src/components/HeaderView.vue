@@ -44,7 +44,9 @@ header {
   justify-content: space-between;
   position: relative;
 }
-
+header h1 {
+  color: #4cb1f6;
+}
 nav {
   /* display: flex; */
   position: fixed;
@@ -56,7 +58,7 @@ nav {
   padding: 1em;
   text-align: center;
   border-radius: 8px;
-  background-color: #1e1e1e;
+  background-color: #c3d5df;
   transform: translateX(-1000%);
   width: 90%;
   transition: all 0.5s ease;
@@ -82,24 +84,29 @@ nav[data-visible="true"] {
 }
 
 .nav1 {
-  border-bottom: 1px solid grey;
+  display: flex;
+  flex-direction: column;
+  /* border-bottom: 1px solid #094166; */
   padding-bottom: 1em;
 }
 
 .loginContainer {
   margin-top: 1em;
+  display: flex;
+  flex-direction: column;
 }
 
 .nav1 a,
 .loginContainer a {
   color: #094166;
   font-weight: bold;
+  padding-bottom: 0.5em;
 }
 
-.nav1 a:hover,
+/* .nav1 a:hover,
 .loginContainer a:hover {
-  color: aliceblue;
-}
+  color: #4cb1f6;
+} */
 
 @media (min-width: 40rem) {
   nav {
@@ -117,7 +124,6 @@ nav[data-visible="true"] {
   }
 
   nav,
-  .nav1,
   .loginContainer {
     display: flex;
     align-items: center;
@@ -125,6 +131,9 @@ nav[data-visible="true"] {
   }
 
   .nav1 {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
     width: 70%;
     gap: 3em;
     border-bottom: none;
@@ -132,16 +141,35 @@ nav[data-visible="true"] {
     padding: 0;
     justify-content: center;
   }
+  .nav1 a:hover,
+  .loginContainer a:hover {
+    color: #4cb1f6;
+    text-decoration: underline;
+  }
 
-  .loginContainer {
+  /* .nav1 a:active,
+  .loginContainer a:active, */
+  nav a.router-link-exact-active {
+    color: #c3d5df;
+    background: #094166;
+    padding: 0.5em 1em;
+    border-radius: 0.4em;
+  }
+
+  /* .loginContainer {
     width: 30%;
     justify-content: flex-end;
     gap: 2em;
     margin: 0;
-  }
+  } */
 
   .mobile_nav {
     display: none;
+  }
+  .loginContainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1em;
   }
 }
 </style>
