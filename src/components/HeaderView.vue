@@ -37,7 +37,7 @@ const handleMenu = () => {
 const visible = ref(false);
 </script>
 
-<style>
+<style scoped>
 header {
   display: flex;
   align-items: center;
