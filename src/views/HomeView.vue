@@ -152,7 +152,7 @@ main {
   justify-content: center;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
   overflow: hidden;
-  margin-bottom: 0;
+  margin-top: 1em;
 }
 .hero h4 {
   font-size: 1.4em;
@@ -160,7 +160,7 @@ main {
   /* mobile up */
   /* padding-bottom: 15px;
   font-size: 40px; */
-  color: #088178;
+  color: #4cb1f6;
   font-family: "League Spartan", sans-serif;
   text-transform: capitalize;
   /* font-weight: bolder; */
@@ -176,16 +176,35 @@ main {
 .hero h1 {
   font-size: 3.2em;
   font-weight: bolder;
-  color: #088178;
+  color: #4cb1f6;
   text-transform: capitalize;
 }
 
+.hero p {
+  font-size: 1.5em;
+  padding: 1em 0;
+}
+
+.hero button {
+  /* width: 50%; */
+  font-size: 1em;
+  padding: 0.8em 1.8em;
+  background-color: #094166;
+  /* background-image: url(../assets/button.png);
+  background-repeat: no-repeat;
+  background-size: cover; */
+  border: 0;
+  cursor: pointer;
+  font-weight: 700;
+  color: #4cb1f6;
+  border-radius: 0.4em;
+}
+
 .image {
-  height: 90vh;
+  height: 30vh;
   width: 100%;
   background-image: url(../assets/hero.avif);
   clip-path: polygon(0 0, 100% 15%, 100% 100%, 0 100%);
-  background-size: cover;
   background-repeat: no-repeat;
 }
 
@@ -221,8 +240,8 @@ main {
   padding: 9px 8px 6px 8px;
   line-height: 1;
   border-radius: 4px;
-  color: #088178;
-  background-color: #fddde4;
+  background-color: #094166;
+  color: #4cb1f6;
   text-transform: capitalize;
 }
 
@@ -268,8 +287,7 @@ main {
 
 .offer1,
 .offer2 {
-  min-width: 380px;
-  margin: 15px;
+  margin: 1em 0;
   height: 200px;
   display: flex;
   flex-direction: column;
@@ -293,7 +311,6 @@ main {
 .promotion1,
 .promotion2,
 .promotion3 {
-  min-width: 370px;
   height: 200px;
   margin: 15px;
   display: flex;
@@ -324,6 +341,27 @@ main {
 @media (min-width: 60rem) {
   main {
     padding-inline: 3em;
+  }
+  .hero button {
+    width: 30%;
+    font-size: 1.5em;
+    padding: 0.7em 1em;
+    background-color: transparent;
+    background-image: url(../assets/button.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 0;
+    cursor: pointer;
+    font-weight: 700;
+    color: #094166;
+  }
+  .image {
+    height: 90vh;
+    width: 100%;
+    background-image: url(../assets/hero.avif);
+    clip-path: polygon(0 0, 100% 15%, 100% 100%, 0 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   .features {
     display: flex;
