@@ -165,5 +165,10 @@ main {
     align-items: center;
     justify-content: space-between;
   }
+  .title {
+    text-align: center;
+    padding: 1em;
+    text-transform: uppercase;
+  }
 }
 </style>
