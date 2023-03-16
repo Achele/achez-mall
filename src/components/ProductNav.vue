@@ -23,12 +23,6 @@
         </li>
       </ul>
     </nav>
-    <!-- <IconsViewVue class="cartIcon" /> -->
-    <button
-      class="mobile_nav"
-      @click="handleMenu"
-      :aria-expanded="visible"
-    ></button>
     <router-view />
   </header>
 </template>
@@ -42,8 +36,26 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 header {
+  padding: 1em 2em;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+}
+.nav1 a {
+  color: #094166;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+/* header {
   padding: 1em 2em;
 }
 nav {
@@ -59,7 +71,7 @@ nav {
 .userProfile,
 .cart {
   padding: 0 1em;
-}
+} */
 
 .wishlist:hover,
 .wishlist:active,
@@ -72,7 +84,32 @@ nav {
 
 .icon {
   color: #094166;
-  width: 40px;
-  height: 40px;
+  width: 20px;
+  height: 20px;
+}
+
+@media (min-width: 60rem) {
+  header {
+    padding: 1.5em 3em;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .list {
+    display: flex;
+    align-items: center;
+  }
+  .wishlist,
+  .userProfile,
+  .cart {
+    padding: 0 1em;
+  }
+  .icon {
+    color: #094166;
+    width: 30px;
+    height: 30px;
+  }
 }
 </style>
