@@ -31,7 +31,7 @@
 
         <p>Total in Stock: {{ product.stock }}</p> -->
         <div class="bottom">
-          <p class="price">Price: {{ product.price }}.-</p>
+          <p class="price">Price: ${{ product.price }}.-</p>
           <Icon icon="ic:round-shopping-cart" width="60" class="icon" />
         </div>
       </div>
