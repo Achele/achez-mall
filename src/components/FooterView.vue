@@ -2,7 +2,6 @@
   <footer>
     <div id="footer">
       <div class="contact">
-        <h1>Achez mall</h1>
         <h3>Contact</h3>
         <address>
           <p><b>Address: </b> Plot 958 Ibani Suites, Mabushi. Abuja</p>
@@ -53,6 +52,7 @@
         <img src="../assets/pay.png" alt="" />
       </div>
     </div>
+    <span class="copyright">© 2023 | Achezcodes All Rights Reserved</span>
   </footer>
 </template>
 
@@ -61,19 +61,16 @@ export default {};
 </script>
 
 <style scoped>
-#footer {
+footer {
   padding: 1em;
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; */
-  /* padding: 75px; */
   background-color: #e8f1f6;
+}
+#footer {
+  padding: 1em 0;
 }
 .socials {
   display: flex;
   align-content: center;
-  /* flex-direction: column; */
 }
 .social img {
   max-width: 100%;
@@ -142,7 +139,12 @@ export default {};
   border-radius: 0 6px 6px 0;
   cursor: pointer;
 }
-
+.copyright {
+  color: rgb(109, 109, 109);
+  text-align: center;
+  padding: 1em 0;
+  font-weight: bold;
+}
 @media (min-width: 40rem) {
   #footer {
     display: flex;
@@ -153,6 +155,11 @@ export default {};
   .socials {
     display: flex;
     flex-direction: row;
+  }
+  .copyright {
+    display: block;
+    margin: 0 auto;
+    padding: 0 0 1em 0;
   }
 }
 </style>
