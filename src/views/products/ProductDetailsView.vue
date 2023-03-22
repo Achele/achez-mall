@@ -6,10 +6,18 @@
       <div class="img">
         <img :src="product.images[0]" :alt="product.title" class="productImg" />
         <div class="imgSiblings">
-          <img :src="product.images[1]" :alt="product.title" />
-          <img :src="product.images[2]" :alt="product.title" />
-          <img :src="product.images[3]" :alt="product.title" />
-          <img :src="product.images[4]" :alt="product.title" />
+          <div class="sibling1">
+            <img :src="product.images[1]" :alt="product.title" />
+          </div>
+          <div class="sibling2">
+            <img :src="product.images[2]" :alt="product.title" />
+          </div>
+          <div class="sibling3">
+            <img :src="product.images[3]" :alt="product.title" />
+          </div>
+          <div class="sibling4">
+            <img :src="product.images[4]" :alt="product.title" />
+          </div>
         </div>
       </div>
       <div class="productDetails">
@@ -29,8 +37,22 @@
           <Icon icon="ic:round-star" />
           <Icon icon="ic:round-star-half" />
         </div>
-        <p>{{ product.description }}</p>
-        <p>Qty:</p>
+        <p class="description">{{ product.description }}</p>
+        <div class="select">
+          <p>Qty:</p>
+          <select @change="onSelectQuantity(product.id)" v-model="selected">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+          </select>
+        </div>
         <div class="buttons">
           <button class="wishlist">Add to Wishlist</button>
           <button class="addToCart" @click="addToCart">Add to cart</button>
@@ -48,13 +70,11 @@ import FooterView from "@/components/FooterView.vue";
 import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { Icon } from "@iconify/vue";
-// import { createStore } from "vuex";
 
-// export default {
 {
   Icon;
 }
-// setup() {
+
 const product = ref({});
 const error = ref(null);
 const route = useRoute();
@@ -103,9 +123,12 @@ main {
 .img {
   width: 50%;
 }
+.imgSiblings {
+  margin: 1em 0;
+}
 .imgSiblings img {
-  width: 100px;
-  height: 100px;
+  /* width: 100px;
+  height: 100px; */
   border-radius: 0.3em;
   padding-right: 0.5em;
 }
@@ -137,12 +160,31 @@ main {
   border-radius: 0.4em;
   margin-left: 0.8em;
   margin-top: 1em;
+  font-weight: bold;
+  /* font-size: 1.2em; */
 }
 .wishlist {
   border: 1px solid #094166;
   color: #094166;
   padding: 0.8em 1.5em;
   border-radius: 0.4em;
+  font-weight: bold;
+  /* font-size: 1.2em; */
+}
+.description {
+  font-size: 1.2em;
+  color: #222;
+  padding: 0.7em 0;
+  /* font-weight: bold; */
+}
+.select {
+  display: flex;
+  align-items: center;
+}
+select {
+  background: #e8f1f6;
+  border: none;
+  margin-left: 0.5em;
 }
 
 @media (min-width: 60rem) {
