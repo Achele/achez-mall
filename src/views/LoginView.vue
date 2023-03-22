@@ -4,26 +4,19 @@
     <section class="container">
       <section>
         <div class="banner">
-          <p>Log in to your Account</p>
-          <p>Welcome back, please enter your details</p>
+          <h2>Welcome Back!</h2>
+          <p>Sign in to continue</p>
         </div>
+        <span v-if="errMsg" class="error">{{ errMsg }}</span>
         <form @submit="login">
-          <h2>Login</h2>
-          <input
-            type="email"
-            placeholder="Email address..."
-            required
-            v-model="form.email"
-          />
-          <input
-            type="password"
-            placeholder="password..."
-            required
-            v-model="form.password"
-          />
+          <label for="email">Email Address</label>
+          <input type="email" required v-model="form.email" />
+
+          <label for="password">Password </label>
+          <input type="password" required v-model="form.password" />
           <button type="submit">Login</button>
         </form>
-        <p>
+        <p class="acc">
           Don't have an account?
           <RouterLink to="/signup">Sign Up</RouterLink>
         </p>
@@ -40,54 +33,26 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 
-// export default {
-// setup() {
 const router = useRouter();
 const store = useStore();
 const form = ref({ email: "", password: "" });
+const errMsg = ref("");
 
 const login = async (e) => {
   e.preventDefault();
   try {
     await store.dispatch("logIn", form.value);
+    if (store.state.authErr == "auth/wrong-password") {
+      console.log(store.state.authErr);
+      errMsg.value = "Wrong password";
+    } else if (store.state.authErr == "auth/user-not-found") {
+      errMsg.value = "User not found";
+    }
     router.push({ name: "products" });
   } catch (error) {
     console.log(error);
   }
 };
-// },
-// };
-// export default {
-//   setup() {
-//     const userName = ref("");
-//     const password = ref("");
-//     const router = useRouter();
-
-//     const dummyData = {
-//       userName: "achezcodes",
-//       password: "password",
-//     };
-
-//     const handleLogin = () => {
-//       if (
-//         userName.value === dummyData.userName &&
-//         password.value === dummyData.password
-//       ) {
-//         localStorage.setItem("token", "cacacacacac");
-//         alert("Login successful!!!");
-//         router.push({ name: "products" });
-//       } else {
-//         alert("Username or Password is incorrect!!!");
-//       }
-//     };
-
-//     return {
-//       userName,
-//       password,
-//       handleLogin,
-//     };
-//   },
-// };
 </script>
 
 <style scoped>
@@ -96,11 +61,6 @@ main {
 }
 .container {
   margin: 2em auto;
-  min-height: 70vh;
-  /* display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #e8f1f6; */
 }
 section {
   background-color: #e8f1f6;
@@ -111,19 +71,27 @@ section {
   color: #094166;
   /* #4cb1f6  check out for background*/
 }
-.banner p {
-  text-align: center;
-  text-transform: capitalize;
-}
+
 .banner {
-  padding: 1em;
+  padding: 0 1em 1.5em 1em;
   line-height: 1.5;
+  text-align: center;
+}
+.banner p {
+  /* font-weight: bold; */
+  padding: 0;
 }
 input {
   color: #094166;
+  margin-top: 0.5em;
 }
+label {
+  font-weight: bold;
+}
+
 input,
-button {
+button,
+.error {
   width: 100%;
   padding: 1em;
   margin-bottom: 1em;
@@ -133,6 +101,22 @@ button {
 button {
   background: #094166;
   color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+.error {
+  background: crimson;
+  color: white;
+  display: block;
+  width: 100%;
+  /* text-align: end; */
+}
+.acc {
+  text-align: center;
+  text-decoration: underline;
+}
+.acc a {
+  color: #094166;
 }
 
 @media (min-width: 60rem) {
