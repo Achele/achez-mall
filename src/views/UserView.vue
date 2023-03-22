@@ -56,9 +56,12 @@ address {
   padding: 0.5em;
 }
 
+address p {
+  font-size: 1.2em;
+}
 button,
 a {
-  padding: 0.5em 1.5em;
+  padding: 0.5em 1em;
   border-radius: 0.4em;
   background: #094166;
   color: #c3d5df;
@@ -66,6 +69,7 @@ a {
   font-size: 1em;
   text-transform: capitalize;
   border: none;
+  margin: 0 0.5em;
 }
 button:hover,
 a {
@@ -75,5 +79,22 @@ p {
   color: #222;
   font-size: 1.5em;
   font-weight: bold;
+}
+
+@media (min-width: 60rem) {
+  button,
+  a {
+    padding: 0.5em 1.5em;
+    border-radius: 0.4em;
+    background: #094166;
+    color: #c3d5df;
+    cursor: pointer;
+    font-size: 1em;
+    text-transform: capitalize;
+    border: none;
+  }
+  address p {
+    font-size: 1.6em;
+  }
 }
 </style>
