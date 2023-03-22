@@ -4,37 +4,31 @@
     <section class="container">
       <section>
         <div class="banner">
-          <h3>Create an account</h3>
-          <p>Sign up now to get started with an account</p>
+          <h3>Create an account!</h3>
+          <p>Please Fill the form below to see products</p>
         </div>
+        <span class="error" v-if="errMsg">{{ errMsg }}</span>
         <form @submit="signUp">
-          <h2>Sign up</h2>
-          <input
-            type="text"
-            name="name"
-            placeholder="Name..."
-            required
-            v-model="form.name"
-          />
+          <label for="name"> Name </label>
+          <input type="text" name="name" required v-model="form.name" />
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Email address..."
-            required
-            v-model="form.email"
-          />
+          <label for="email">Email Address </label>
+          <input type="email" name="email" required v-model="form.email" />
 
+          <label for="password">Password </label>
           <input
             type="password"
             name="password"
-            placeholder="password..."
             required
             v-model="form.password"
           />
 
-          <input type="submit" value="Sign Up" class="submit" />
+          <input type="submit" value="Create Account" class="submit" />
         </form>
+        <p>
+          Already have an account?
+          <RouterLink to="/login">Sign in</RouterLink>
+        </p>
       </section>
     </section>
   </main>
@@ -51,30 +45,24 @@ import HeaderView from "@/components/HeaderView.vue";
 const store = useStore();
 const form = ref({ password: "", email: "", name: "" });
 const router = useRouter();
-const errorMsg = ref("");
-const disable = ref(false);
+const errMsg = ref("");
 
 const signUp = async (e) => {
   e.preventDefault();
   console.log(form.value, store);
   try {
-    disable.value = true;
     await store.dispatch("signUp", form.value);
     if (store.state.user) {
       router.push({ name: "login" });
-    } else if (
-      store.state.authError == "Firebase: Error (auth/email already in use)"
-    ) {
-      errorMsg.value = "Email already in use";
-    } else if (
-      store.state.authError ==
-      "Firebase: Password should be at least 6 characters (auth/weak-password)."
-    ) {
-      errorMsg.value = "Password should be atleast 6 characters";
+    } else if (store.state.authErr == "auth/email-already-in-use") {
+      // console.log(store.state.authErr);
+      errMsg.value = "Email already in use";
+    } else if (store.state.authErr == "auth/weak-password") {
+      // console.log(store.state.authErr);
+      errMsg.value = "Password should be atleast 6 characters";
     }
-    disable.value = false;
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
   }
 };
 </script>
@@ -86,17 +74,14 @@ main {
 .container {
   margin: 2em auto;
   min-height: 70vh;
-  /* display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #e8f1f6; */
 }
 
 .error {
-  color: red;
+  background: crimson;
+  color: white;
   display: block;
   width: 100%;
-  text-align: end;
+  /* text-align: end; */
 }
 section {
   background-color: #e8f1f6;
@@ -107,19 +92,37 @@ section {
   color: #094166;
   /* #4cb1f6  check out for background*/
 }
-.banner p {
-  text-align: center;
-  text-transform: capitalize;
-}
 .banner {
-  padding: 1em;
+  padding: 0 1em 1.5em 1em;
   line-height: 1.5;
+  text-align: center;
+}
+p a {
+  cursor: pointer;
+  color: #094166;
+  font-weight: bolder;
+  text-align: center;
+}
+p {
+  text-align: center;
+}
+.banner p {
+  /* font-weight: bold; */
+  padding: 0;
 }
 input {
   color: #094166;
+  margin-top: 0.5em;
+}
+label {
+  font-weight: bold;
+}
+h2 {
+  font-weight: bold;
 }
 input,
-button {
+button,
+.error {
   width: 100%;
   padding: 1em;
   margin-bottom: 1em;

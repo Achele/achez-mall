@@ -41,42 +41,21 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { onMounted } from "vue";
 import { Icon } from "@iconify/vue";
 // eslint-disable-next-line no-unused-vars
 import ProductNav from "@/components/ProductNav.vue";
 // eslint-disable-next-line no-unused-vars
 import FooterView from "@/components/FooterView.vue";
-// export default {
-// name: "ProductsView",
+import FetchProducts from "@/composables/FetchProducts";
 {
   Icon;
 }
-// setup() {
-const products = ref([]);
-const error = ref(null);
-const loading = ref(true);
 
-const load = async () => {
-  try {
-    const res = await fetch("https://dummyjson.com/products");
-    if (!res.ok) {
-      throw Error("no data available");
-    }
-    const data = await res.json();
-    loading.value = false;
-    products.value = data.products;
-    console.log(data);
-  } catch (err) {
-    error.value = err.message;
-    console.log(error.value);
-  }
-};
-onMounted(() => load());
-
-// return { Icon, products, error, loading };
-// },
-// };
+const { products, loading, error, load } = FetchProducts();
+onMounted(() => {
+  load();
+});
 </script>
 
 <style>
