@@ -27,6 +27,7 @@
 <script setup>
 // import IconsView from "./components/IconsView.vue";
 import { ref } from "vue";
+import { RouterLink } from "vue-router";
 
 const handleMenu = () => {
   if (visible.value === false) {
