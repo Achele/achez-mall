@@ -55,23 +55,6 @@ nav {
   font-size: 1.5em;
   font-weight: bold;
 }
-/* header {
-  padding: 1em 2em;
-}
-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.list {
-  display: flex;
-  align-items: center;
-}
-.wishlist,
-.userProfile,
-.cart {
-  padding: 0 1em;
-} */
 
 .wishlist:hover,
 .wishlist:active,
