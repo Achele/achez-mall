@@ -2,7 +2,9 @@
   <ProductNav />
   <main class="products">
     <div v-if="error">{{ error }}</div>
-    <div v-if="loading">Loading...</div>
+    <div v-if="loading" class="loading">
+      <Icon icon="eos-icons:bubble-loading" class="loading-icon" />
+    </div>
 
     <section
       v-else
@@ -65,6 +67,27 @@ onMounted(() => {
   margin: 0;
   gap: 20px;
   padding: 3em;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.loading-icon {
+  animation: rotate 1s linear infinite;
+  width: 80px;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .products-container {
