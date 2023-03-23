@@ -102,6 +102,7 @@ nav[data-visible="true"] {
   color: #094166;
   font-weight: bold;
   padding-bottom: 0.5em;
+  font-size: 1.5em;
 }
 
 /* .nav1 a:hover,
