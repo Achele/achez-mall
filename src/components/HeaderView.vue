@@ -144,19 +144,20 @@ nav[data-visible="true"] {
     justify-content: center;
   }
   .nav1 a:hover,
-  .loginContainer a:hover {
+  .loginContainer a:hover,
+  nav a.router-link-exact-active {
     color: #4cb1f6;
     text-decoration: underline;
   }
 
   /* .nav1 a:active,
   .loginContainer a:active, */
-  nav a.router-link-exact-active {
+  /* nav a.router-link-exact-active {
     color: #c3d5df;
     background: #094166;
     padding: 0.5em 1em;
     border-radius: 0.4em;
-  }
+  } */
 
   /* .loginContainer {
     width: 30%;
